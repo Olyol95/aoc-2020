@@ -4,10 +4,9 @@ use clap::App;
 use std::fs;
 use std::process;
 
-pub mod solution;
-
-use solution::day1::Day1;
-use solution::Solution;
+use aoc_2020::solution::Solution;
+use aoc_2020::solution::Day1;
+use aoc_2020::solution::Day2;
 
 fn main() {
     let opts = App::new("Advent of Code Solutions 2020")
@@ -38,7 +37,8 @@ fn main() {
     let input: Vec<&str> = input_text.split("\n").filter(|s| !s.is_empty()).collect();
 
     let solution = match day {
-        1 => Day1 {},
+        1 => Box::new( Day1 {} ) as Box<dyn Solution>,
+        2 => Box::new( Day2 {} ) as Box<dyn Solution>,
         _ => {
             println!("Solution not available for day {}", day);
             process::exit(1);
