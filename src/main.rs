@@ -7,6 +7,7 @@ use std::process;
 use aoc_2020::solution::Solution;
 use aoc_2020::solution::Day1;
 use aoc_2020::solution::Day2;
+use aoc_2020::solution::Day3;
 
 fn main() {
     let opts = App::new("Advent of Code Solutions 2020")
@@ -39,6 +40,7 @@ fn main() {
     let solution = match day {
         1 => Box::new( Day1 {} ) as Box<dyn Solution>,
         2 => Box::new( Day2 {} ) as Box<dyn Solution>,
+        3 => Box::new( Day3 {} ) as Box<dyn Solution>,
         _ => {
             println!("Solution not available for day {}", day);
             process::exit(1);
