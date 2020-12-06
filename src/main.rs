@@ -32,19 +32,19 @@ fn main() {
         }
     };
 
-    let input: Vec<&str> = input_text.lines().collect();
+    let input = input_text.lines().collect();
 
     let solution = match day {
-        1 => Box::new( Day1 {} ) as Box<dyn Solution>,
-        2 => Box::new( Day2 {} ) as Box<dyn Solution>,
-        3 => Box::new( Day3 {} ) as Box<dyn Solution>,
-        4 => Box::new( Day4 {} ) as Box<dyn Solution>,
+        1 => Box::new( Day1::new(&input) ) as Box<dyn Solution>,
+        2 => Box::new( Day2::new(&input) ) as Box<dyn Solution>,
+        3 => Box::new( Day3::new(&input) ) as Box<dyn Solution>,
+        4 => Box::new( Day4::new(&input) ) as Box<dyn Solution>,
         _ => {
             println!("Solution not available for day {}", day);
             process::exit(1);
         }
     };
 
-    println!("part 1: {}", solution.part_1(&input));
-    println!("part 2: {}", solution.part_2(&input));
+    println!("part 1: {}", solution.part_1());
+    println!("part 2: {}", solution.part_2());
 }

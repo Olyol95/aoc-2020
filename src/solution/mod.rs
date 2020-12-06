@@ -9,6 +9,6 @@ pub mod day3;
 pub mod day4;
 
 pub trait Solution {
-    fn part_1(&self, input: &Vec<&str>) -> String;
-    fn part_2(&self, input: &Vec<&str>) -> String;
+    fn part_1(&self) -> String;
+    fn part_2(&self) -> String;
 }

@@ -5,8 +5,6 @@ use regex::Regex;
 
 use std::collections::HashMap;
 
-pub struct Day4 {}
-
 #[derive(Clone)]
 struct Field {
     name: String,
@@ -113,40 +111,48 @@ impl Passport {
     }
 }
 
+pub struct Day4 {
+    passports: Vec<Passport>,
+}
+
+impl Day4 {
+    pub fn new(input: &Vec<&str>) -> Day4 {
+        let mut passports = vec![];
+        let mut fields = HashMap::new();
+        for (idx, line) in input.iter().enumerate() {
+            if !line.is_empty() {
+                for item in line.split(" ") {
+                    let (key, value) = item.split_at(3);
+                    fields.insert(String::from(key), Field::new(key, &value[1..]));
+                }
+            }
+            if line.is_empty() || idx == input.len() - 1 {
+                passports.push(
+                    Passport {
+                        fields: fields.clone(),
+                    }
+                );
+                fields.clear();
+            }
+        }
+        Day4 {
+            passports: passports,
+        }
+    }
+}
+
 impl Solution for Day4 {
-    fn part_1(&self, input: &Vec<&str>) -> String {
-        parse_input(input).iter()
+    fn part_1(&self) -> String {
+        self.passports.iter()
             .filter(|p| p.has_required_fields())
             .count()
             .to_string()
     }
 
-    fn part_2(&self, input: &Vec<&str>) -> String {
-        parse_input(input).iter()
+    fn part_2(&self) -> String {
+        self.passports.iter()
             .filter(|p| p.is_valid())
             .count()
             .to_string()
     }
-}
-
-fn parse_input(input: &Vec<&str>) -> Vec<Passport> {
-    let mut passports = vec![];
-    let mut fields = HashMap::new();
-    for (idx, line) in input.iter().enumerate() {
-        if !line.is_empty() {
-            for item in line.split(" ") {
-                let (key, value) = item.split_at(3);
-                fields.insert(String::from(key), Field::new(key, &value[1..]));
-            }
-        }
-        if line.is_empty() || idx == input.len() - 1 {
-            passports.push(
-                Passport {
-                    fields: fields.clone(),
-                }
-            );
-            fields.clear();
-        }
-    }
-    passports
 }

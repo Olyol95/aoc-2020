@@ -1,7 +1,5 @@
 use crate::solution::Solution;
 
-pub struct Day2 {}
-
 struct Policy {
     range_start: u8,
     range_end: u8,
@@ -50,10 +48,37 @@ impl Password {
     }
 }
 
+pub struct Day2 {
+    passwords: Vec<Password>,
+}
+
+impl Day2 {
+    pub fn new(input: &Vec<&str>) -> Day2 {
+        let mut passwords = vec![];
+        for line in input {
+            let parts: Vec<&str> = line.split(" ").collect();
+            let range: Vec<&str> = parts[0].split("-").collect();
+            passwords.push(
+                Password::new(
+                    parts[2],
+                    Policy {
+                        range_start: range[0].parse::<u8>().unwrap(),
+                        range_end: range[1].parse::<u8>().unwrap(),
+                        character: parts[1].chars().nth(0).unwrap(),
+                    },
+                )
+            );
+        }
+        Day2 {
+            passwords: passwords,
+        }
+    }
+}
+
 impl Solution for Day2 {
-    fn part_1(&self, input: &Vec<&str>) -> String {
+    fn part_1(&self) -> String {
         let mut total_valid = 0;
-        for password in parse_input(input) {
+        for password in &self.passwords {
             if password.is_valid("old") {
                 total_valid = total_valid + 1;
             }
@@ -61,32 +86,13 @@ impl Solution for Day2 {
         total_valid.to_string()
     }
 
-    fn part_2(&self, input: &Vec<&str>) -> String {
+    fn part_2(&self) -> String {
         let mut total_valid = 0;
-        for password in parse_input(input) {
+        for password in &self.passwords {
             if password.is_valid("new") {
                 total_valid = total_valid + 1;
             }
         }
         total_valid.to_string()
     }
-}
-
-fn parse_input(input: &Vec<&str>) -> Vec<Password> {
-    let mut input_mut = vec![];
-    for line in input {
-        let parts: Vec<&str> = line.split(" ").collect();
-        let range: Vec<&str> = parts[0].split("-").collect();
-        input_mut.push(
-            Password::new(
-                parts[2],
-                Policy {
-                    range_start: range[0].parse::<u8>().unwrap(),
-                    range_end: range[1].parse::<u8>().unwrap(),
-                    character: parts[1].chars().nth(0).unwrap(),
-                },
-            )
-        );
-    }
-    input_mut
 }
