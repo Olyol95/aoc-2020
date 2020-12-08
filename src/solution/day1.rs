@@ -18,7 +18,7 @@ impl Day1 {
 }
 
 impl Solution for Day1 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         for tortoise in 0..self.expenses.len() - 1 {
             let x = self.expenses[tortoise];
             for hare in tortoise + 1..self.expenses.len() {
@@ -34,7 +34,7 @@ impl Solution for Day1 {
         "0".to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         for tortoise in 0..self.expenses.len() - 2 {
             let x = self.expenses[tortoise];
             for hare in tortoise + 1..self.expenses.len() - 1 {

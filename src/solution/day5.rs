@@ -44,7 +44,7 @@ impl Day5 {
 }
 
 impl Solution for Day5 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         self.boarding_passes.iter()
             .map(|pass| pass.id())
             .max()
@@ -52,7 +52,7 @@ impl Solution for Day5 {
             .to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         let mut ids: Vec<u16> = self.boarding_passes.iter()
             .map(|p| p.id())
             .collect();

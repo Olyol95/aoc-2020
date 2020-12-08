@@ -62,14 +62,14 @@ impl Day6 {
 }
 
 impl Solution for Day6 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         self.response_groups.iter()
             .map(|r| r.unique_responses())
             .fold(0, |a, b| a + b)
             .to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         self.response_groups.iter()
             .map(|r| r.common_responses())
             .fold(0, |a, b| a + b)

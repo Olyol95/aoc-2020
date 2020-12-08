@@ -87,14 +87,14 @@ impl Day7 {
 }
 
 impl Solution for Day7 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         self.bags.values()
             .filter(|bag| bag.can_contain("shiny gold"))
             .count()
             .to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         self.bags.get("shiny gold").unwrap()
             .total_bags()
             .to_string()

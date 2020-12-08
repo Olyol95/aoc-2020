@@ -56,11 +56,11 @@ impl Day3 {
 }
 
 impl Solution for Day3 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         self.landscape.count_impassable(&3, &1).to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         let mut totals = vec![];
         let (mut inc_x, mut inc_y) = (1, 1);
         for _ in 0..5 {

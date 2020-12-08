@@ -142,14 +142,14 @@ impl Day4 {
 }
 
 impl Solution for Day4 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         self.passports.iter()
             .filter(|p| p.has_required_fields())
             .count()
             .to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         self.passports.iter()
             .filter(|p| p.is_valid())
             .count()

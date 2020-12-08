@@ -76,7 +76,7 @@ impl Day2 {
 }
 
 impl Solution for Day2 {
-    fn part_1(&self) -> String {
+    fn part_1(&mut self) -> String {
         let mut total_valid = 0;
         for password in &self.passwords {
             if password.is_valid("old") {
@@ -86,7 +86,7 @@ impl Solution for Day2 {
         total_valid.to_string()
     }
 
-    fn part_2(&self) -> String {
+    fn part_2(&mut self) -> String {
         let mut total_valid = 0;
         for password in &self.passwords {
             if password.is_valid("new") {
