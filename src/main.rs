@@ -34,7 +34,7 @@ fn main() {
 
     let input = input_text.lines().collect();
 
-    let solution = match day {
+    let mut solution = match day {
         1 => Box::new( Day1::new(&input) ) as Box<dyn Solution>,
         2 => Box::new( Day2::new(&input) ) as Box<dyn Solution>,
         3 => Box::new( Day3::new(&input) ) as Box<dyn Solution>,
@@ -42,6 +42,7 @@ fn main() {
         5 => Box::new( Day5::new(&input) ) as Box<dyn Solution>,
         6 => Box::new( Day6::new(&input) ) as Box<dyn Solution>,
         7 => Box::new( Day7::new(&input) ) as Box<dyn Solution>,
+        8 => Box::new( Day8::new(&input) ) as Box<dyn Solution>,
         _ => {
             println!("Solution not available for day {}", day);
             process::exit(1);

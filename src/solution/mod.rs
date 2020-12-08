@@ -5,6 +5,7 @@ pub use self::day4::Day4;
 pub use self::day5::Day5;
 pub use self::day6::Day6;
 pub use self::day7::Day7;
+pub use self::day8::Day8;
 
 pub mod day1;
 pub mod day2;
@@ -13,8 +14,9 @@ pub mod day4;
 pub mod day5;
 pub mod day6;
 pub mod day7;
+pub mod day8;
 
 pub trait Solution {
-    fn part_1(&self) -> String;
-    fn part_2(&self) -> String;
+    fn part_1(&mut self) -> String;
+    fn part_2(&mut self) -> String;
 }
