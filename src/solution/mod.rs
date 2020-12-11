@@ -7,6 +7,7 @@ pub use self::day6::Day6;
 pub use self::day7::Day7;
 pub use self::day8::Day8;
 pub use self::day9::Day9;
+pub use self::day10::Day10;
 
 pub mod day1;
 pub mod day2;
@@ -17,6 +18,7 @@ pub mod day6;
 pub mod day7;
 pub mod day8;
 pub mod day9;
+pub mod day10;
 
 pub trait Solution {
     fn part_1(&mut self) -> String;
