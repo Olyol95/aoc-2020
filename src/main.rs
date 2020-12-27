@@ -49,6 +49,7 @@ fn main() {
         12 => Box::new( Day12::new(&input) ) as Box<dyn Solution>,
         13 => Box::new( Day13::new(&input) ) as Box<dyn Solution>,
         14 => Box::new( Day14::new(&input) ) as Box<dyn Solution>,
+        15 => Box::new( Day15::new(&input) ) as Box<dyn Solution>,
         _ => {
             println!("Solution not available for day {}", day);
             process::exit(1);
